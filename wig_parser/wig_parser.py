@@ -43,8 +43,10 @@ def main():
         parsed_wig = parse_wig(path)
         if len(parsed_wig["entries"]) > 0:
             wig_list.append(parsed_wig)
-            print(path)
+            # print(path)
     print(wig_list)
+    # with open("wig_dict.txt", "w") as outconn:
+    #     outconn.write(str(wig_list))
             
 
 if __name__ == "__main__":
