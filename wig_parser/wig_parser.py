@@ -18,6 +18,7 @@ def parse_wig(path):
                     chromosome_number = 17
                 else:
                     chromosome_number = int(chromosome_number_string)
+                my_parsed_wig["file_path"] = path
                 my_parsed_wig["chromosome_name"] = chromosome_name
                 my_parsed_wig["chromosome_number_string"] = chromosome_number_string
                 my_parsed_wig["chromosome_number"] = chromosome_number
@@ -30,6 +31,18 @@ def parse_wig(path):
                     my_parsed_wig["entries"].append(entry)
             line_number = line_number+1
     return(my_parsed_wig)
+
+def read_and_filter_wigs(file_containing_paths):
+    paths = []
+    for line in file_containing_paths:
+        paths.append(line.rstrip('\n'))
+    
+    wigs = []
+    for path in paths:
+        parsed_wig = parse_wig(path)
+        if len(parsed_wig["entries"]) > 0:
+            wigs.append(parsed_wig)
+    return(wigs)
 
 def main():
     file_list = []

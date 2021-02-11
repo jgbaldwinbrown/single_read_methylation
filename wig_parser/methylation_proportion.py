@@ -25,15 +25,7 @@ def grand_total_meth_prop_and_sums(meth_props_and_sums_list):
 
 # stdin should be a list of .wig files, one file path per line
 
-file_paths = []
-for line in sys.stdin:
-    file_paths.append(line.rstrip('\n'))
-
-wigs = []
-for path in file_paths:
-    parsed_wig = wp.parse_wig(path)
-    if len(parsed_wig["entries"]) > 0:
-        wigs.append(parsed_wig)
+wigs = wp.read_and_filter_wigs(sys.stdin)
 
 proportions = []
 for wig in wigs:
