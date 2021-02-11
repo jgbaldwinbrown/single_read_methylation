@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
-
 def parse_wig(path):
     my_parsed_wig = {}
     line_number = 0
@@ -50,4 +48,5 @@ def main():
             
 
 if __name__ == "__main__":
+    import sys
     main()
