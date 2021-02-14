@@ -1,0 +1,7 @@
+track type=wiggle_0 name="output/SD_DAM_testing_38f4c528-037c-470d-8c85-c825f0808a04.fast5_fraction_modified_reads_rev_strand" description="output/SD_DAM_testing_38f4c528-037c-470d-8c85-c825f0808a04.fast5 fraction_modified_reads rev_strand"
+variableStep chrom=chr2 span=1
+635220 0.0000
+636360 0.0000
+637661 1.0000
+638550 1.0000
+641244 0.0000
