@@ -10,7 +10,7 @@ def parse_wig(path):
             split_line = line.split()
             if line_number == 0:
                 my_parsed_wig["header"] = line
-            elif line_number == 1:
+            elif len(line) >= len("variable") and line[:8] == "variable":
                 my_parsed_wig["encoding"] = split_line[0]
                 chromosome_name = split_line[1].split('=')[1]
                 chromosome_number_string = chromosome_name.replace("chr", "")
