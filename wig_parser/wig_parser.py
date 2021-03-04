@@ -43,7 +43,7 @@ def read_and_filter_wigs(file_containing_paths):
     wigs = []
     for path in paths:
         parsed_wig = parse_wig(path)
-        if len(parsed_wig["entries"]) > 0:
+        if has_entries(parsed_wig):
             wigs.append(parsed_wig)
     return(wigs)
 

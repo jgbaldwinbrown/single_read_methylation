@@ -9,18 +9,19 @@ def sort_key(wig_object):
 def sort_wigs(wigs_list):
     sorted_wigs = sorted(
         wigs_list, 
-        key = lambda x: (x["chromosome_number"], x["entries"][0]["position"])
+        key = lambda x: (x["sections"][0]["chromosome_number"], x["sections"][0]["entries"][0]["position"])
     )
     return(sorted_wigs)
 
 def print_wig(wig):
-    for entry in wig["entries"]:
-        print_list = []
-        print_list.append(str(wig["chromosome_number"]))
-        print_list.append(str(entry["position"]))
-        print_list.append(str(entry["value"]))
-        print_list.append(str(wig["file_path"]))
-        print("\t".join(print_list))
+    for section in wig["sections"]:
+        for entry in section["entries"]:
+            print_list = []
+            print_list.append(str(section["chromosome_number"]))
+            print_list.append(str(entry["position"]))
+            print_list.append(str(entry["value"]))
+            print_list.append(str(section["file_path"]))
+            print("\t".join(print_list))
 
 def print_wigs(wigs):
     for wig in wigs:
