@@ -1,0 +1,35 @@
+{
+    "header": ...
+    "sections": [
+        {
+            "chromosome_name": ...
+            "chromosome_number": ...
+            "entries": [
+                {
+                    "position": ...
+                    "value": ...
+                }
+                {
+                    ...
+                }
+                ...
+                ...
+            ]
+        }
+        {
+            ...
+        }
+    ]
+}
+
+# to get the list of all of the sections:
+my_wig["sections"]
+
+# to get the first section
+my_wig["sections"][0]
+
+# to get the list of entries in the first section:
+my_wig["sections"][0]["entries"]
+
+# to get the first entry of of the first sections:
+my_wig["sections"][0]["entries"][0]
