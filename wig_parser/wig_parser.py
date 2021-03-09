@@ -53,6 +53,23 @@ def has_entries(wig):
             return True
     return False
 
+def print_wig(wig):
+    for section in wig["sections"]:
+        for entry in section["entries"]:
+            print_list = []
+            print_list.append(str(section["chromosome_number"]))
+            print_list.append(str(entry["position"]))
+            print_list.append(str(entry["value"]))
+            print_list.append(str(section["file_path"]))
+            print("\t".join(print_list))
+
+def print_wigs(wigs):
+    for wig in wigs:
+        print_wig(wig)
+
+
+
+
 def main():
     file_list = []
     for line in sys.stdin:

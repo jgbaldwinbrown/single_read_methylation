@@ -27,9 +27,13 @@ def print_wigs(wigs):
     for wig in wigs:
         print_wig(wig)
 
-wigs = wp.read_and_filter_wigs(sys.stdin)
 
-# print_wigs(wigs)
+def main():
+    wigs = wp.read_and_filter_wigs(sys.stdin)
+    sorted_wigs = sort_wigs(wigs)
+    print_wigs(sorted_wigs)
 
-sorted_wigs = sort_wigs(wigs)
-print_wigs(sorted_wigs)
+
+if __name__ == "__main__":
+    import sys
+    main()
