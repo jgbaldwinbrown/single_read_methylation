@@ -4,14 +4,16 @@ import sys
 def mcaller_to_wig(filename):
     infile = open(filename, 'r')
     file = infile.readlines()
-    my_parsed_wig_full = {}
-    my_parsed_wig = []
-    my_parsed_wig_full["sections"] = my_parsed_wig
+    out = []
     old_string = 'a'
     for line in file:
         line = line.rstrip('\t')
         line = line.split()
         if line[3] != old_string:
+            my_parsed_wig_full = {}
+            out.append(my_parsed_wig_full)
+            my_parsed_wig = []
+            my_parsed_wig_full["sections"] = my_parsed_wig
             my_parsed_wig.append({})
             my_parsed_wig[-1]["entries"] = []
             chromosome_name = 'chr' + line[0]
@@ -34,13 +36,13 @@ def mcaller_to_wig(filename):
             entry["value"] = float(line[2])
             my_parsed_wig[-1]["entries"].append(entry)
         old_string = line[3]
-    return([my_parsed_wig_full])
+    return(out)
 
 
 def main():
     filename = sys.argv[1]
-    out = mcaller_to_wig(filename)
-    print(out)
+    output = mcaller_to_wig(filename)
+    print(output)
 
 
 
