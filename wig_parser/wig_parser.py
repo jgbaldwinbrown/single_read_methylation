@@ -67,8 +67,12 @@ def print_wigs(wigs):
     for wig in wigs:
         print_wig(wig)
 
-
-
+def write_wig(wig, outconn):
+    outconn.write(wig["header"] + "\n")
+    for section in wig["sections"]:
+        outconn.write("variableStep chrom=" + section["chromosome_name"] + " span=" + str(section["span"]) + "\n")
+        for entry in section["entries"]:
+            outconn.write(str(entry["position"]) + " " + ("%.4f" % entry["value"]) + "\n")
 
 def main():
     file_list = []
