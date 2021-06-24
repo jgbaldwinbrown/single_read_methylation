@@ -87,6 +87,8 @@ def mcaller_to_wig(filename):
             out.append(my_parsed_wig_full)
             my_parsed_wig = []
             my_parsed_wig_full["sections"] = my_parsed_wig
+            my_parsed_wig_full["header"] = "dummy header"
+            my_parsed_wig_full["file_path"] = line[3]
             my_parsed_wig.append({})
             my_parsed_wig[-1]["entries"] = []
             chromosome_name = 'chr' + line[0]
@@ -95,10 +97,10 @@ def mcaller_to_wig(filename):
                 chromosome_number = 17
             else:
                 chromosome_number = int(chromosome_number_string)
-            my_parsed_wig[-1]["file_path"] = line[3]
             my_parsed_wig[-1]["chromosome_name"] = chromosome_name
             my_parsed_wig[-1]["chromosome_number_string"] = chromosome_number_string
             my_parsed_wig[-1]["chromosome_number"] = chromosome_number
+            my_parsed_wig[-1]["span"] = 1
             entry = {}
             entry["position"] = int(line[1])
             entry["value"] = float(line[2])
