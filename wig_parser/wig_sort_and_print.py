@@ -30,8 +30,13 @@ def print_wigs(wigs):
 
 def main():
     wigs = wp.read_and_filter_wigs(sys.stdin)
+    threshold = int(sys.argv[1])
     sorted_wigs = sort_wigs(wigs)
-    print_wigs(sorted_wigs)
+    sorted_and_filtered_wigs = []
+    for wig in sorted_wigs:
+        if wp.more_entries_than_threshold(wig, threshold):
+            sorted_and_filtered_wigs.append(wig)
+    print_wigs(sorted_and_filtered_wigs)
 
 
 if __name__ == "__main__":

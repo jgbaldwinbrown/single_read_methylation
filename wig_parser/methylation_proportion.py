@@ -7,10 +7,11 @@ def meth_prop_and_sums(wig_data, threshold = 0.5):
     # wig_data contains the entries "header", "entries", "encoding", "chromosome_name", "chromosome_number_string", and "chromosome_number"
     total_methylated_sites = 0
     total_sites = 0
-    for entry in wig_data["entries"]:
-        total_sites = total_sites + 1
-        if entry["value"] >= threshold:
-            total_methylated_sites += 1
+    for section in wig_data["sections"]:
+        for entry in section["entries"]:
+            total_sites = total_sites + 1
+            if entry["value"] >= threshold:
+                total_methylated_sites += 1
     methylation_proportion = (total_methylated_sites / total_sites)
     return(methylation_proportion, total_methylated_sites, total_sites)
 

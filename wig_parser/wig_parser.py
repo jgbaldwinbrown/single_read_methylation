@@ -113,6 +113,12 @@ def mcaller_to_wig(filename):
         old_string = line[3]
     return(out)
 
+def more_entries_than_threshold(parsed_wig, ts = 3):
+    for section in parsed_wig["sections"]:
+        if len(section["entries"]) >= ts:
+            return True
+    return False
+
 def main():
     file_list = []
     for line in sys.stdin:
