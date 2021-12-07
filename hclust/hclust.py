@@ -25,6 +25,14 @@ def tree(linkage_matrix: np.ndarray, original_data: np.ndarray) -> TN:
 
 def data2tree(data: list) -> TN:
     return tree(link(arrayify(data)), arrayify(data))
+
+def tree2list(tree: TN) -> list:
+    if tree.children != None and len(tree.children) > 0:
+        out = []
+        for node in tree.children:
+            out.extend(tree2list(node))
+        return out
+    return [tree.name]
  
 def main():
     data = [[1, 2, 3, 4],
@@ -32,7 +40,8 @@ def main():
             [9, 10, 11, 12]]
     print(data)
     print(data2tree(data))
-    plot_dendro(dendro(link(arrayify(data))))
+    print(tree2list(data2tree(data)))
+    # plot_dendro(dendro(link(arrayify(data))))
     
 
 if __name__ == "__main__":
